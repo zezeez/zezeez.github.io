@@ -21,10 +21,18 @@ do
 	fi
 done
 
-git pull origin
+git stash push . -m 'update job' > /dev/null
+updateMsg=`git pull origin`
+if [ "x$updateMsg" == "xAlready up to date." ]; then
+	git stash pop > /dev/null
+	echo "Update done, nothing to do."
+	exit 0
+fi
 
 lastestVer=""
 hasUpdate=0
+
+git stash drop > /dev/null
 
 idx=0
 for p in $platform:
