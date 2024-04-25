@@ -32,7 +32,7 @@ fi
 lastestVer=""
 hasUpdate=0
 
-git stash drop > /dev/null
+git stash pop > /dev/null
 
 idx=0
 for p in $platform:
