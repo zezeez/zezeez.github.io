@@ -30,10 +30,10 @@
   <body>
 	<!-- Global definition -->
     <script>
-		var latest_version = "0.0.2"
-		var win_version = "0.0.2"
+		var latest_version = "0.2.0"
+		var win_version = "0.2.0"
 		var mac_version = "0.0.1"
-		var update_date = "2024-03-31"
+		var update_date = "2024-05-08"
 	</script>
     <!-- navbar-->
     <header class="header">
@@ -115,7 +115,7 @@
           <div class="text col-lg-6">
             <div class="icon"><img src="img/hourglass.svg" alt="..." class="img-fluid"></div>
             <h4>多平台支持</h4>
-            <p>多平台支持，Windows/Mac OS</p><a href="#download" class="btn btn-primary btn-shadow btn-gradient">下载</a>
+            <p>多平台支持，Windows/Mac OS/Linux</p><a href="#download" class="btn btn-primary btn-shadow btn-gradient">下载</a>
           </div>
         </div>
         <div class="row d-flex align-items-center">
@@ -135,12 +135,15 @@
       <div class="container text-center" id = "download">
         <header id="download_head">
 			<script>
-				var a = document.createElement("a");
-				a.innerHTML = '<a href="download/win/yuny_' + win_version + '.zip" class="btn btn-primary btn-shadow btn-gradient">下载WIN版(' + win_version + ')</a>'
+				var a = document.createElement("WinDL");
+				a.innerHTML = '<a href="http://101.201.78.185/download/win/yuny_' + win_version + '.zip" class="btn btn-primary btn-shadow btn-gradient">WIN(' + win_version + ')</a><br /><br />'
 				var div = document.getElementById("download_head");
 				div.appendChild(a)
-				a = document.createElement("a");
-				a.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a margin-left=10px href="download/mac/yuny_' + mac_version + '.pkg" class="btn btn-primary btn-shadow btn-gradient">下载MAC版(' + mac_version + ')</a>'
+				a = document.createElement("MACDL");
+				a.innerHTML = '<a margin-left=10px href="https://github.com/zezeez/yunying" class="btn btn-primary btn-shadow btn-gradient">MAC(获取源代码)</a><br /><br />'
+				div.appendChild(a)
+				a = document.createElement("LinuxDL");
+				a.innerHTML = '<a margin-left=10px href="https://github.com/zezeez/yunying" class="btn btn-primary btn-shadow btn-gradient">Linux(获取源代码)</a><br /><br />'
 				div.appendChild(a)
 			</script>
         </header>
