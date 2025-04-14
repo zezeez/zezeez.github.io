@@ -1,106 +1,597 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>帮助</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Custom Font Icons CSS-->
-    <link rel="stylesheet" href="css/landy-iconfont.css">
-    <!-- Google fonts - Open Sans-->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800">
-    <!-- owl carousel-->
-    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.carousel.css">
-    <link rel="stylesheet" href="vendor/owl.carousel/assets/owl.theme.default.css">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="favicon.png">
-    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-  </head>
-  <body>
-    <!-- navbar-->
-    <header class="header">
-      <nav class="navbar navbar-expand-lg fixed-top"><a href="index.html" class="navbar-brand">云映</a>
-        <button type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler navbar-toggler-right"><span></span><span></span><span></span></button>
-        <div id="navbarSupportedContent" class="collapse navbar-collapse">
-          <ul class="navbar-nav ml-auto align-items-start align-items-lg-center">
-            <li class="nav-item"><a href="index.html" class="nav-link link-scroll">首页</a></li>
-          </ul>
-        </div>
-      </nav>
-    </header>
-    <section>
-      <div class="container">
-        <div class="row block no-margin-bottom">
-          <div class="col-lg-9">
-            <h3>常见问题</h3>
-            <h5>软件提示下单成功并且也发送了通知为什么打开12306却发现没有待支付订单？</h5>
-            <ul>
-              <li>12306待支付订单目前只会保留10分钟，很可能是你超过了10分钟后才去支付所以没有待支付订单.</li>
-            </ul>
-			<h5>软件使用收费吗？或者有会员功能吗？</h5>
-            <ul>
-              <li>软件为免费使用，并且没有会员功能.</li>
-            </ul>
-			<h5>自动冻结是什么意思？</h5>
-            <ul>
-              <li>在抢票高峰时期，易出现车次还有余票但提交不了的情况，出现这种情况的原因为缓存过期数据命中，即cdn数据过期了但没有刷新缓存，由于缓存刷新需要一定的间隔，所以你看到的只是无效的数据（过期的）。为了防止软件反复提交过期数据，当发现服务器返回提交失败时，自动将该车次加入冻结列表冻结指定的时间，在冻结的时间间隔内不再重复提交该车次.</li>
-            </ul>
-			<h5>提示设置系统时间失败？</h5>
-            <ul>
-              <li>很可能是软件没有修改系统时间的权限，即不是以管理员身份运行.</li>
-            </ul>
-			<h5>可以登陆多个账号吗？</h5>
-            <ul>
-              <li>不可以，但可以选多个乘车人.</li>
-            </ul>
-			<h5>该软件跟12306有关系吗？</h5>
-            <ul>
-              <li>本软件完全由个人开发，跟12306无任何关系.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-    <footer class="main-footer">
-      <div class="container">
-        <div class="row">
-            <ul class="contact-info list-unstyled">
-			  <li>联系作者</li>
-              <li><a href="mailto:gethelp@88.com">gethelp@88.com</a></li>
-            </ul>
-          </div>
-      </div>
-      <div class="copyrights">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-7">
-              <p>Copyright &copy; 2024.云映 All rights reserved.</p>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>云映 - 使用说明文档</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --text-color: #333;
+            --light-gray: #f5f5f5;
+            --border-color: #e0e0e0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #fff;
+        }
+        
+        /* 文档容器 */
+        .document-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* 侧边栏导航 */
+        .sidebar {
+            width: 280px;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .sidebar-header {
+            padding: 0 20px 20px;
+            border-bottom: 1px solid #34495e;
+            margin-bottom: 20px;
+        }
+        
+        .sidebar h1 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+        
+        .sidebar .version {
+            font-size: 14px;
+            color: #bdc3c7;
+        }
+        
+        /* 目录样式 */
+        .toc {
+            padding: 0 20px;
+        }
+        
+        .toc ul {
+            list-style: none;
+        }
+        
+        .toc li {
+            margin-bottom: 5px;
+        }
+        
+        .toc a {
+            color: #ecf0f1;
+            text-decoration: none;
+            display: block;
+            padding: 8px 10px;
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+        
+        .toc a:hover {
+            background-color: #34495e;
+            color: var(--primary-color);
+        }
+        
+        .toc .active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .toc .section-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #bdc3c7;
+            font-size: 14px;
+            text-transform: uppercase;
+        }
+        
+        /* 主内容区 */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            max-width: 900px;
+        }
+        
+        /* 内容章节 */
+        .content-section {
+            margin-bottom: 50px;
+            scroll-margin-top: 20px; /* 防止固定导航栏遮挡 */
+        }
+        
+        .content-section h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--primary-color);
+        }
+        
+        .content-section h3 {
+            font-size: 22px;
+            margin: 25px 0 15px;
+            color: var(--secondary-color);
+        }
+        
+        .content-section h4 {
+            font-size: 18px;
+            margin: 20px 0 10px;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+        }
+        
+        .content-section ul, .content-section ol {
+            margin-bottom: 15px;
+            padding-left: 25px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+        
+        /* 代码块样式 */
+        .code-block {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        
+        /* 提示和警告框 */
+        .note {
+            background-color: #e7f4ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        .warning {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 4px 4px 0;
+        }
+        
+        /* 图片样式 */
+        .screenshot {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            margin: 15px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .img-caption {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-top: -10px;
+            margin-bottom: 20px;
+        }
+        
+        /* 步骤说明 */
+        .step {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary-color);
+        }
+        
+        .step-number {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .document-container {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <!-- 侧边栏导航 -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1>云映</h1>
+                <div class="version">版本 0.3.4</div>
             </div>
-            <div class="col-md-5 text-right">
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Javascript files-->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"> </script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="vendor/jquery.cookie/jquery.cookie.js"> </script>
-    <script src="vendor/owl.carousel/owl.carousel.min.js"></script>
-    <script src="js/front.js"></script>
-  </body>
+            
+            <nav class="toc">
+                <div class="section-title">开始</div>
+                <ul>
+                    <li><a href="#introduction" class="active">介绍</a></li>
+                    <li><a href="#installation">安装指南</a></li>
+                    <li><a href="#quick-start">快速开始</a></li>
+                </ul>
+                
+                <div class="section-title">操作指引</div>
+                <ul>
+                    <li><a href="#configure-step">操作步骤</a></li>
+                    <li><a href="#upgrade">更新</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+                
+                <div class="section-title">其他</div>
+                <ul>
+                    <li><a href="#license">许可协议</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </aside>
+        
+        <!-- 主内容区 -->
+        <main class="main-content">
+            <!-- 介绍部分 -->
+            <section id="introduction" class="content-section">
+                <h2>介绍</h2>
+                <p>欢迎使用云映，这是一款快捷实现12306购票工具。本指南将帮助您了解如何使用本软件的所有功能。</p>
+                
+            </section>
+            
+            <!-- 安装指南 -->
+            <section id="installation" class="content-section">
+                <h2>安装指南</h2>
+				<p>有两种安装方式：</p>
+				<div class="step">
+                    <div class="step-number">1.从官网下载</div>
+                    <h4>下载压缩包/安装包</h4>
+                    <a href="https://op9.top/download.html">跳转到下载页面</a>
+					<p>按提示下载及运行</p>
+					<p>Windows无需安装，Linux需要安装</p>
+                </div>
+                
+                
+                <div class="step">
+                    <div class="step-number">1.从源代码编译</div>
+                    <h4>准备好Qt的编译环境（最好是Qt6.0.0之后的版本）</h4>
+                    <a href="https://github.com/zezeez/12306-yunying">跳转到github仓库</a>
+					<p>从github仓库下载源代码编译运行</p>
+                </div>
+                
+            </section>
+            
+            <!-- 快速开始 -->
+            <section id="quick-start" class="content-section">
+                <h2>快速开始</h2>
+                <p>本节将引导您快速了解软件的基本使用方法。</p>
+                
+                <h3>首次运行</h3>
+                <p>启动软件后，您将看到登陆界面：</p>
+				<h4>密码登陆</h4>
+				<img src="img/yunying/login_passwd.png" alt="登陆界面" class="screenshot"></img>
+				<p class="img-caption">图1. 密码登陆界面</p>
+                <ol>
+					<li>服务器：选择登陆的服务器，不知道怎么选默认就好</li>
+					<li>用户名：12306注册的用户名、邮箱、手机号</li>
+					<li>密码：12306密码</li>
+					<li>勾选记住密码：密码以加密方式保存在本地，下次打开自动填充</li>
+                </ol>
+				<h4>扫码登陆</h4>
+				<img src="img/yunying/login_qrcode.png" alt="登陆界面" class="screenshot">></img>
+				<p class="img-caption">图2. 扫码登陆界面</p>
+                <ol>
+                    <li>打开12306手机app扫码，点击确认即可完成登陆</li>
+                </ol>
+				
+            </section>
+            
+            <!-- 功能一 -->
+            <section id="configure-step" class="content-section">
+				
+                <img src="img/yunying/main_window.png" alt="主界面" class="screenshot">
+                <p class="img-caption">图3. 主界面</p>
+                
+                <h3>操作步骤</h3>
+                <div class="step">
+                    <div class="step-number">步骤 1</div>
+                   <p>1：填写出发站，可用简拼、全拼、汉字输入，并从下拉列表中选取车站</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">步骤 2</div>
+                    <p>2：填写到达站，可用简拼、全拼、汉字输入，并从下拉列表中选取车站</p>
+                </div>
+				<div class="step">
+                    <div class="step-number">步骤 3</div>
+                    <p>3：选择日期：从下拉日历列表中选择乘车日期</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">步骤 4</div>
+                    <p>4：查询：可获取到所选日期的从出发站点到到达站点的车次</p>
+                </div>
+				<div class="step">
+                    <div class="step-number">步骤 5</div>
+					<p>点击“选择乘车人”按钮，弹出如下对话框</p>
+					<img src="img/yunying/passenger.png"  alt="乘车人界面" class="screenshot"></img>
+					<p class="img-caption">图4. 选择乘车人界面</p>
+                    <p>选择左侧乘车人点击向右按钮添加到右侧选中乘车人</p>
+					
+					<p>部分提交：待提交列车所选席别不足以提交全部所选乘车人时，会尝试选择第二个席别（如果有），如果第二个席席别座位（铺）仍不能满足全部所选乘车人时，只提交席别能满足的乘车人（按乘车人列表的顺序提交，列表前面的先提交）</p>
+					<p>不提交：待提交列车所选席别不足以提交全部所选乘车人时，不提交本次车次</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">步骤 6</div>
+                    <p>点击“选择车次”按钮，弹出如下对话框</p>
+					<img src="img/yunying/train.png"  alt="车次界面" class="screenshot"></img>
+					<p class="img-caption">图5. 选择车次界面</p>
+					<p>选择车次有2种方式</p>
+					<ol>
+						<img src="img/yunying/train_view.png"  alt="车次界面" class="screenshot"></img>
+						<p class="img-caption">图6. 选择车次界面</p>
+						<li>在车次列表中点击右键，右键菜单中选择“选中车次”或“选中所有车次”或点击右侧“预订”按钮</li>
+						<li>在图5选择车次对话框中从左侧“未选中车次”移动到“右侧选中车次”</li>
+						<p>车次提交规则</p>
+						<li>按选中的车次顺序提交：按已选中车次列表顺序检索车次，先检索到符合条件（即有票）的先提交，可点击“向上”或“向下”按钮来调整车次的优选顺序</li>
+						<li>按列车发车顺序提交：发车时间在前面的先检索，先检索到符合条件（即有票）的先提交</li>
+						<li>行程时间短的车次优先提交：行程时间短的车次先检索，先检索到符合条件（即有票）的先提交</li>
+						<li>余票充足的车次优先提交（默认）：余票充足的车次（即余票显示为“有”）的车次先提交</li>
+						<li>默认：选择第一个余票充足的车次</li>
+						<li>G开头的车次优先提交：在余票充足的条件下，G开头的车次优先提交，如果没有G开头的车次，提交第一个余票充足的车次</li>
+						<li>D开头的车次优先提交：在余票充足的条件下，D开头的车次优先提交，如果没有D开头的车次，提交第一个余票充足的车次</li>
+						<li>以下时间段优先提交：先检索指定时间段内的车次，检索到则提交，否则提交第一个余票充足的车次</li>
+					</ol>
+                </div>
+				<div class="step">
+                    <div class="step-number">步骤 7</div>
+                    <p>点击“选择席别”按钮，弹出如下对话框</p>
+					<ol>
+						<img src="img/yunying/seat_type.png"  alt="席别界面" class="screenshot"></img>
+						<p class="img-caption">图7. 选择席别界面</p>
+						<li>在选择车次对话框中从左侧“未选中席别”移动到“右侧选中席别”</li>
+						<p>席别提交规则</p>
+						<li>按选中席别的顺序提交：按已选中席别列表顺序检索席别，先检索到符合条件（即有票）的先提交，可点击“向上”或“向下”按钮来调整席别的优选顺序</li>
+						<li>余票充足的席别优先提交：优选提交检索到的第一个余票充足的席别（即余票显示为“有”）</li>
+						<li>余票充足时价格低的席别优先提交（默认）：同时余票充足的条件下（余票显示为“有”），优先提交价格低的席别，比如同时选了一等座、二等座，并且一等座、二等座同时显示为“有”，则提交二等座</li>
+						<li>价格低的席别优选提交：优先选择价格低的席别（不考虑余票）</li>
+						<li>价格高的席别优选提交：优先选择价格高的席别（不考虑余票）</li>
+					</ol>
+                </div>
+				<div class="step">
+                    <div class="step-number">步骤 8（可选）</div>
+                    <p>点击“选座/铺”选项卡，弹出如下界面</p>
+					<ol>
+						<p>选座</p>
+						<img src="img/yunying/choose_seat.png"  alt="选座界面" class="screenshot"></img>
+						<p class="img-caption">图8. 选座界面</p>
+						<li>在下拉框中选择“一等座、二等座、商务座、优选一等座”</li>
+						<li>点击座位图标，图标显示为蓝色即为已选中，再次点击为取消选中</li>
+						<li>点击”清空“按钮可清空所有选座</li>
+						<div class="note">
+							<strong>注意：</strong> 若列车/席别不支持选座，则忽略选座
+						</div>
+						<div class="note">
+							<strong>注意：</strong> 选座按照”ABCDF“的顺序提交，假设有两个乘车人，选了”ABC“三个座位，则只提交”AB“；若已选座人数少于待提交乘车人数，则不提交选座
+						</div>
+						<p>选铺</p>
+						<li>点击选铺选项卡</li>
+						<li>填写“上铺、中铺、下铺”的数量</li>
+						<li>点击”清空“按钮可清空所有选铺</li>
+						<div class="note">
+							<strong>注意：</strong> 选铺优先按下铺、中铺、上铺的顺序提交
+						</div>
+						<div class="note">
+							<strong>注意：</strong> 若列车/席别不支持选铺，则忽略选铺
+						</div>
+						<div class="note">
+							<strong>注意：</strong> 若已选铺人数少于待提交乘车人数，则不提交选铺
+						</div>
+					</ol>
+                </div>
+				<div class="step">
+                    <div class="step-number">步骤 9</div>
+                    <p>点击“设置”按钮，弹出如下对话框</p>
+					<ol>
+						<img src="img/yunying/common_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<p class="img-caption">图9. 通用设置界面</p>
+						<li>车次过滤条件的设置及软件常规设置</li>
+					</ol>
+					<p>点击“抢票设置”选项卡，弹出如下界面</p>
+					<ol>
+						<img src="img/yunying/ticket_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<p class="img-caption">图10. 抢票设置界面</p>
+						<li>定时抢票：在指定的时间开始抢票</li>
+						<li>自动冻结：启用冻结功能后，对于提交失败的车次（余票不足）自动冻结处理，防止由于缓存原因频繁提交无票的车次</li>
+						<li>刷票模式：多种不同的刷票时间间隔切换</li>
+					</ol>
+					<p>点击“候补设置”选项卡，弹出如下界面</p>
+					<ol>
+						<img src="img/yunying/hb_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<p class="img-caption">图10. 候补设置界面</p>
+						<li>候补购票：启用候补功能</li>
+						<li>只候补不购票：只进行候补</li>
+						<li>优选候补：优选提交候补</li>
+						<li>优选候补：即使显示有票也提交候补（避免缓存不刷新问题）</li>
+						<li>接受无座：候补时接受无座</li>
+						<li>接受增开列车：授受指定时间范围内的增开列车</li>
+						<li>额外候补日期：最多选择额外两个候补日期</li>
+						<li>候补兑现截止时间：候补最后的截止时间</li>
+					</ol>
+					<p>点击“候补设置”选项卡，弹出如下界面</p>
+					<ol>
+						<img src="img/yunying/pay_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<p class="img-caption">图11. 支付设置界面</p>
+						<li>主动唤起支付：启用主动支付功能，可选择不同的支付方式</li>
+						<div class="note">
+							<strong>注意：</strong> 该功能仅为自动打开支付页面，需要在支付页面手动支付
+						</div>
+					</ol>
+					<p>点击“邮件通知”选项卡，弹出如下界面</p>
+					<ol>
+						<img src="img/yunying/mail_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<p class="img-caption">图12. 邮件通知界面</p>
+						<li>启用邮件通知：启用邮件通知功能，分为简易模式跟高级模式</li>
+						<p>简易模式</p>
+						<ol>
+							<li>发件人：从下拉框中选择邮箱后缀，此时发件人栏不需要填邮箱后缀</li>
+							<li>授权码：邮箱设置的第三方登陆授权码，主流邮箱都支持</li>
+							<li>收件人：收件人邮箱地址，需要带'@'后缀，多个收件人以','分隔（收件人可以与发件人相同，即自己发给自己）</li>
+							<li>ssl加密：以加密形式发送邮件</li>
+							<li>记住授权码：保存授权码在本地，方便下次自动填充</li>
+						</ol>
+						<p>高级模式</p>
+						<ol>
+							<li>发件人：发件人邮箱地址，需要填邮箱后缀（@xxx.com）</li>
+							<li>授权码：与简易模式相同</li>
+							<li>收件人：与简易模式相同</li>
+							<li>smtp域名：一般为"smtp.xxx.com"（比如smtp.163.com），不懂可以找邮箱提供商</li>
+							<li>smtp端口：一般ssl为465，不懂可以找邮箱提供商</li>
+							<li>ssl加密：以加密形式发送邮件</li>
+							<li>记住授权码：保存授权码在本地，方便下次自动填充</li>
+						</ol>
+					</ol>
+					<p>点击“微信设置”选项卡，弹出如下界面</p>
+					<ol>
+						<img src="img/yunying/servchan_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<p class="img-caption">图13. 支付设置界面</p>
+						<li>启用：此功能为微信公众号通知，需要先关注server酱微信公众号</li>
+						<li>点击‘点我’按钮按照指引操作并把获取到的SendKey粘贴到下方</li>
+						<li>记住SendKey：保存SendKey在本地，方便下次自动填充</li>
+						
+					</ol>
+                </div>
+				<div class="step">
+                    <div class="step-number">步骤 10</div>
+                    <p>点击“开始”按钮，确认弹出对话框的信息无误后，点击”是“开始购票/抢票</p>
+                </div>
+            </section>
+            
+			<section id="upgrade" class="content-section">
+                <h2>更新</h2>
+                <p>更新有两种方式：</p>
+                <h4>1.手动更新</h4>
+				<p>前往下载页面手动下载最新版本</p>
+				<h4>2.自动更新</h4>
+				<p>软件启动会自动检查更新，当有新版本可用时，在更新提示对话框选择“是”即可“</p>
+				<div class="note">
+				<p>关于更新文件的保存位置</p>
+				<p>更新的的文件会保存在”当前程序位置上一级目录/软件名称_版本号/yuny.exe“，比如当前程序位于”D:\Downloads\yuny_0.3.3\yuny.exe“，则更新的程序位于”D:\Downloads\yuny_0.3.4\yuny.exe“
+                </div>
+            </section>
+			
+			<section id="license" class="content-section">
+                <h2>许可证</h2>
+                <p>本软件遵循GPL v3许可证</p>
+            </section>
+            
+            <!-- 常见问题 -->
+            <section id="faq" class="content-section">
+                <h2>常见问题</h2>
+                
+                <h3>问题一：如何重置设置？</h3>
+                <p>答：可以通过删除配置文件或使用重置命令来恢复默认设置。</p>
+                
+                <h3>问题二：软件无法启动怎么办？</h3>
+                <p>答：请检查系统日志或尝试重新安装软件。</p>
+
+				<h3>问题一：软件提示下单成功并且也发送了通知为什么打开12306却发现没有待支付订单？</h3>
+				<p>12306待支付订单目前只会保留10分钟，很可能是你超过了10分钟后才去支付所以没有待支付订单.</p>
+				
+				<h3>问题二：软件使用收费吗？或者有会员功能吗？</h3>
+				<p>软件为免费使用，并且没有会员功能.</p>
+				
+				<h3>问题三：自动冻结是什么意思？</h3>
+				<p>在抢票高峰时期，易出现车次还有余票但提交不了的情况，出现这种情况的原因为缓存过期数据命中，即cdn数据过期了但没有刷新缓存，由于缓存刷新需要一定的间隔，所以你看到的只是无效的数据（过期的）。为了防止软件反复提交过期数据，当发现服务器返回提交失败时，自动将该车次加入冻结列表冻结指定的时间，在冻结的时间间隔内不再重复提交该车次.</p>
+				
+				<h3>问题四：提示设置系统时间失败？</h3>
+				<p>很可能是软件没有修改系统时间的权限，即不是以管理员身份运行.</p>
+				
+				<h3>问题五：可以登陆多个账号吗？</h3>
+				<p>不可以，但可以选多个乘车人.</p>
+				
+				<h3>问题六：该软件跟12306有关系吗？</h3>
+				<p>本软件完全由个人开发，跟12306无任何关系.</p>
+            </section>
+            
+            <!-- 联系我们 -->
+            <section id="contact" class="content-section">
+                <h2>联系我们</h2>
+                <p>如果您有任何问题或建议，请通过以下方式联系我们：</p>
+                <ul>
+                    <li>电子邮件：gethelp@88.com</li>
+                    <li>官方网站：http://op9.top</li>
+                </ul>
+            </section>
+        </main>
+    </div>
+    
+    <script>
+        // 高亮当前查看的目录项
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.toc a');
+            
+            window.addEventListener('scroll', function() {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 100)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + current) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    
+                    // 更新URL但不跳转
+                    history.pushState(null, null, targetId);
+                }
+            });
+        });
+    </script>
+</body>
 </html>
