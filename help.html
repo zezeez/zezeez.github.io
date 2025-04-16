@@ -345,15 +345,18 @@
                 <div class="step">
                     <div class="step-number">步骤 6</div>
                     <p>点击“选择车次”按钮，弹出如下对话框</p>
-					<img src="img/yunying/train.png"  alt="车次界面" class="screenshot"></img>
-					<p class="img-caption">图5. 选择车次界面</p>
+					
 					<p>选择车次有2种方式</p>
+					<p>1</p>
+					<p class="img-caption">图5. 选择车次界面</p>
+					<li>在车次列表中点击右键，右键菜单中选择“选中车次”或“选中所有车次”或点击右侧“预订”按钮</li>
+					<img src="img/yunying/train.png"  alt="车次界面" class="screenshot"></img>
+					<p>2</p>
 					<ol>
 						<img src="img/yunying/train_view.png"  alt="车次界面" class="screenshot"></img>
 						<p class="img-caption">图6. 选择车次界面</p>
-						<li>在车次列表中点击右键，右键菜单中选择“选中车次”或“选中所有车次”或点击右侧“预订”按钮</li>
-						<li>在图5选择车次对话框中从左侧“未选中车次”移动到“右侧选中车次”</li>
-						<p>车次提交规则</p>
+						<p>在图5选择车次对话框中从左侧“未选中车次”移动到“右侧选中车次”</p>
+						<h4>车次提交规则</h4>
 						<li>按选中的车次顺序提交：按已选中车次列表顺序检索车次，先检索到符合条件（即有票）的先提交，可点击“向上”或“向下”按钮来调整车次的优选顺序</li>
 						<li>按列车发车顺序提交：发车时间在前面的先检索，先检索到符合条件（即有票）的先提交</li>
 						<li>行程时间短的车次优先提交：行程时间短的车次先检索，先检索到符合条件（即有票）的先提交</li>
@@ -370,8 +373,8 @@
 					<ol>
 						<img src="img/yunying/seat_type.png"  alt="席别界面" class="screenshot"></img>
 						<p class="img-caption">图7. 选择席别界面</p>
-						<li>在选择车次对话框中从左侧“未选中席别”移动到“右侧选中席别”</li>
-						<p>席别提交规则</p>
+						<p>在选择车次对话框中从左侧“未选中席别”移动到“右侧选中席别”</p>
+						<h4>席别提交规则</h4>
 						<li>按选中席别的顺序提交：按已选中席别列表顺序检索席别，先检索到符合条件（即有票）的先提交，可点击“向上”或“向下”按钮来调整席别的优选顺序</li>
 						<li>余票充足的席别优先提交：优选提交检索到的第一个余票充足的席别（即余票显示为“有”）</li>
 						<li>余票充足时价格低的席别优先提交（默认）：同时余票充足的条件下（余票显示为“有”），优先提交价格低的席别，比如同时选了一等座、二等座，并且一等座、二等座同时显示为“有”，则提交二等座</li>
@@ -420,15 +423,18 @@
 					</ol>
 					<p>点击“抢票设置”选项卡，弹出如下界面</p>
 					<ol>
-						<img src="img/yunying/ticket_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<img src="img/yunying/ticket_setting.png"  alt="抢票设置界面" class="screenshot"></img>
 						<p class="img-caption">图10. 抢票设置界面</p>
 						<li>定时抢票：在指定的时间开始抢票</li>
 						<li>自动冻结：启用冻结功能后，对于提交失败的车次（余票不足）自动冻结处理，防止由于缓存原因频繁提交无票的车次</li>
 						<li>刷票模式：多种不同的刷票时间间隔切换</li>
+						<li>学生票：</li>
+						<li>勾选：只有乘客类型为学生的情况下才提交学生票，否则提交原有的乘客类型</li>
+						<li>不勾选：乘客类型为学生的情况下提交成人票，否则提交原有的乘客类型</li>
 					</ol>
 					<p>点击“候补设置”选项卡，弹出如下界面</p>
 					<ol>
-						<img src="img/yunying/hb_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<img src="img/yunying/hb_setting.png"  alt="候补设置界面" class="screenshot"></img>
 						<p class="img-caption">图10. 候补设置界面</p>
 						<li>候补购票：启用候补功能</li>
 						<li>只候补不购票：只进行候补</li>
@@ -441,7 +447,7 @@
 					</ol>
 					<p>点击“候补设置”选项卡，弹出如下界面</p>
 					<ol>
-						<img src="img/yunying/pay_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<img src="img/yunying/pay_setting.png"  alt="支付设置界面" class="screenshot"></img>
 						<p class="img-caption">图11. 支付设置界面</p>
 						<li>主动唤起支付：启用主动支付功能，可选择不同的支付方式</li>
 						<div class="note">
@@ -450,7 +456,7 @@
 					</ol>
 					<p>点击“邮件通知”选项卡，弹出如下界面</p>
 					<ol>
-						<img src="img/yunying/mail_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<img src="img/yunying/mail_setting.png"  alt="邮件通知界面" class="screenshot"></img>
 						<p class="img-caption">图12. 邮件通知界面</p>
 						<li>启用邮件通知：启用邮件通知功能，分为简易模式跟高级模式</li>
 						<p>简易模式</p>
@@ -474,7 +480,7 @@
 					</ol>
 					<p>点击“微信设置”选项卡，弹出如下界面</p>
 					<ol>
-						<img src="img/yunying/servchan_setting.png"  alt="通用设置界面" class="screenshot"></img>
+						<img src="img/yunying/servchan_setting.png"  alt="微信通知界面" class="screenshot"></img>
 						<p class="img-caption">图13. 支付设置界面</p>
 						<li>启用：此功能为微信公众号通知，需要先关注server酱微信公众号</li>
 						<li>点击‘点我’按钮按照指引操作并把获取到的SendKey粘贴到下方</li>
